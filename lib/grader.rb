@@ -21,10 +21,16 @@ class Grader
       student = {
         name: row[:name],
         grades: grades,
-        average: 0
+        average: compute_average(grades)
       }
 
       @students << student
     end
+  end
+
+  def compute_average(grades)
+    return 0 if grades.empty?
+
+    (grades.values.sum.to_f / grades.size).round
   end
 end
